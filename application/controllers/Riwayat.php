@@ -7,7 +7,7 @@ class Riwayat extends CI_Controller {
 	{
 		parent::__construct();
 		if ($this->session->userdata('status') != 'logged_in') {
-			redirect('/');
+			redirect('auth');
 		}
 		date_default_timezone_set("Asia/Jakarta");
 	}
