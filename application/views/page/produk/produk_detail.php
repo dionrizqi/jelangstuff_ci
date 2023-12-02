@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card" style="height:400px;">
+                <div class="card" style="height:auto;">
                     <div class="card-body">
                         <h1><?= $detail['nama'] ?></h1>
                         <h2>Rp. <?= number_format($detail['harga']) ?></h2>
@@ -85,9 +85,10 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <form method="post" action="#">
+                                <form method="post" action="<?=site_url('keranjang/tambah')?>">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <input type="hidden" name="id_produk" value="<?=$detail['id']?>">
                                             <?php if ($detail['stok'] < 5 && $detail['stok'] != 0) { ?>
                                                 <p style="color:red;font-weight:bold;">Stok mau habis, segera beli!</p>
                                             <?php } else if ($detail['stok'] == 0) { ?>
@@ -95,8 +96,20 @@
                                             <?php } else {
                                             } ?>
                                             <div class="form-group">
-                                                <label>Jumlah : </label>
-                                                <input value="1" type="number" id="jumlah_beli" min="1" max="<?= $detail['stok'] ?>" class="form-control" placeholder="Masukkan Jumlah" required>
+                                                <label>Jumlah :  <a style="color:red;">*</a></label>
+                                                <div class="input-group inline-group">
+                                                    <div class="input-group-prepend">
+                                                        <a href="javascript:void(0)" role="button" class="btn btn-outline-secondary btn-minus">
+                                                            <i class="fa fa-minus"></i>
+                                                        </a>
+                                                    </div>
+                                                    <input name="jumlah" value="1" type="number" id="jumlah_beli" min="1" max="<?= $detail['stok'] ?>" class="form-control" placeholder="Masukkan Jumlah" required>
+                                                    <div class="input-group-append">
+                                                        <a href="javascript:void(0)" role="button" class="btn btn-outline-secondary btn-plus">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                                 <p id="text_jumlah" style="color:red;font-weight:bold;"></p>
                                             </div>
                                             <?php if ($detail['stok'] <= 0) {
@@ -106,7 +119,12 @@
                                             } ?>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <button <?= $dis ?> class="btn btn-secondary btn-sm btn-block">Keranjang</button>
+                                                    <button  
+                                                    <?php if ($detail['stok'] <= 0 || $this->db->get_where('keranjang', array('id_produk' => $detail['id'], 'id_user' => $this->session->userdata('id')))->num_rows() > 0) {
+                                                        echo "disabled";
+                                                     }
+                                                    ?>
+                                                    class="btn btn-secondary btn-sm btn-block">Keranjang</button>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <a <?php if ($this->session->userdata('status') != 'logged_in') { ?> href="<?= site_url('auth') ?>" <?php } else { ?> href="#" onclick="beli_produk(<?= $detail['stok'] . ',' . $detail['harga'] . ',' . $detail['berat'] ?>)" <?php } ?> class="<?= $dis ?> btn btn-success btn-sm btn-block">Beli</a>
@@ -133,7 +151,7 @@
                 <h4 class="modal-title" id="myModalLabel">BELI <?= $detail['nama'] ?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form method="post" action="<?= site_url('produk/beli_langsung') ?>">
+            <form method="post" action="<?= site_url('produk/beli_langsung') ?>" enctype="multipart/form-data">
                 <div class="modal-body" id="">
                     <input type="hidden" name="id_produk" value="<?= $detail['id'] ?>">
                     <table style="width:100%;height:210px; padding:2px">
@@ -199,14 +217,14 @@
                     Edit info di menu profile user jika data tidak sesuai
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="hidden" name="id_user" value="<?=$user['id']?>">
+                            <input type="hidden" name="id_user" value="<?= $user['id'] ?>">
                             <div class="form-group">
                                 <label>Nama : <a style="color:red;">*</a></label>
-                                <input readonly type="text" name="nama" class="form-control" value="<?=$user['nama'] ?>" placeholder="Nama" required>
+                                <input readonly type="text" name="nama" class="form-control" value="<?= $user['nama'] ?>" placeholder="Nama" required>
                             </div>
                             <div class="form-group">
                                 <label>Email : <a style="color:red;">*</a></label>
-                                <input readonly type="email" name="email" class="form-control" value="<?=$user['email'] ?>" placeholder="Email address" required>
+                                <input readonly type="email" name="email" class="form-control" value="<?= $user['email'] ?>" placeholder="Email address" required>
                             </div>
                             <div class="form-group">
                                 <label>Nomor Telepon : <a style="color:red;">*</a></label>
@@ -214,14 +232,23 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">62</div>
                                     </div>
-                                    <input readonly type="number" name="telp" class="form-control" placeholder="Nomor Telepon" value="<?=substr($user['telepon'], 2) ?>" required>
+                                    <input readonly type="number" name="telp" class="form-control" placeholder="Nomor Telepon" value="<?= substr($user['telepon'], 2) ?>" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Alamat : <a style="color:red;">*</a></label>
-                                <textarea readonly class="form-control" name="alamat" placeholder="Alamat" style="min-height:120px;" required><?=$user['alamat']?></textarea>
+                                <textarea readonly class="form-control" name="alamat" placeholder="Alamat" style="min-height:120px;" required><?= $user['alamat'] ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Upload Bukti Pembayaran : <a style="color:red;">*</a></label><br>
+                                <input type="file" name="bukti" required>
                             </div>
                         </div>
                     </div>

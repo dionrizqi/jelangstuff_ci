@@ -100,12 +100,12 @@
         <!--/ Title row end -->
 
         <div class="row">
-            <?php foreach($getDealer as $row){ ?>
+            <?php foreach($getTerlaris as $row){ ?>
             <div class="col-lg-3 col-md-3 mb-3">
                 <div class="latest-post">
                     <div class="latest-post-media">
                         <a href="#" class="latest-post-img">
-                            <img loading="lazy" class="img-fluid" style="height:300px !important;" src="<?= base_url(''); ?>dist/kendaraan/<?=$row->foto?>" alt="img">
+                            <img loading="lazy" class="img-fluid" style="height:300px !important;" src="<?= base_url(''); ?>dist/foto_produk/<?=$row->foto?>" alt="img">
                         </a>
                     </div>
                     <div class="post-body">
@@ -114,8 +114,8 @@
                         </h4>
                         <div class="latest-post-meta">
                             <span class="post-item-date">
-                                Total Produk: <?=$row->jumlah?> <br>
-                                Alamat: <?=$row->alamat?>
+                                Total Pembelian: <?=$row->jumlah?> <br>
+                                Kategori: <?=$row->nama_kategori?>
                             </span>
                         </div>
                     </div>
@@ -128,9 +128,6 @@
         </div>
         <!--/ Content row end -->
 
-        <div class="general-btn text-center mt-4">
-            <a class="btn btn-primary" href="<?=site_url('dealer')?>">Lihat Semua Dealer</a>
-        </div>
 
     </div>
     <!--/ Container end -->

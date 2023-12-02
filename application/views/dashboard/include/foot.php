@@ -10,29 +10,54 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="<?= base_url(); ?>plugins/js/swal/sweetalert2.all.min.js"></script>
 
-<script>   
-    $(document).on('click', '.tombol-hapus', function(e){
-            e.preventDefault();
-            var href = $(this).attr('href');
+<script>
+    var uri = 0;
+    <?php if($this->uri->segment(3) == true) {?>
+        uri = <?=$this->uri->segment(3)?>;
+    <?php } ?>
+    console.log(uri);
+    $(document).on('click', '.tombol-hapus', function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
 
-            Swal({
-                title: 'Anda yakin?',
-                text: "Data akan dihapus secara permanen!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#e74c3c',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Delete'
-            }).then((result) => {
-                if (result.value) {
-                    document.location.href = href;
-                }
-            })
- 
+        Swal({
+            title: 'Anda yakin?',
+            text: "Data akan dihapus secara permanen!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e74c3c',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Delete'
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+            }
+        })
+
     });
-    
 
-    
+    $(document).on('click', '.tombol-confirm', function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
+
+        Swal({
+            title: 'Anda yakin?',
+            text: "Aksi ini tidak dapat dikembalikan!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e74c3c',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Submit'
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+            }
+        })
+
+    });
+
+
+
 
     $(document).ready(function() {
         $('.datatables').DataTable();
@@ -57,10 +82,32 @@
             },
         });
 
+        $('#table_ongkir').DataTable({
+            "ajax": {
+                url: '<?= base_url() ?>dashboard/get_ongkir',
+                type: 'GET'
+            },
+        });
+
         $('#table_faq').DataTable({
             "ajax": {
                 url: '<?= base_url() ?>dashboard/get_faq',
                 type: 'GET'
+            },
+        });
+
+        $('#table_pembelian').DataTable({
+            "ajax": {
+                url: '<?= base_url() ?>dashboard/get_pembelian',
+                type: 'GET'
+            },
+        });
+
+        $('#table_history').DataTable({
+            "ajax": {
+                data: {id:uri},
+                url: '<?= base_url() ?>dashboard/get_history_pembelian',
+                type: 'POST'
             },
         });
 
@@ -106,7 +153,7 @@
             }
         });
     }
-    
+
     function edit_user(id) {
         $.ajax({
             type: "POST",
@@ -119,7 +166,20 @@
             }
         });
     }
-    
+
+    function user_modal(id) {
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url() ?>dashboard/show_detail_user",
+            data: {
+                id: id
+            },
+            success: function(data) {
+                $("#show_detail_user").html(data);
+            }
+        });
+    }
+
     function edit_produk(id) {
         $.ajax({
             type: "POST",
@@ -132,7 +192,7 @@
             }
         });
     }
-    
+
     function edit_faq(id) {
         $.ajax({
             type: "POST",
@@ -145,7 +205,21 @@
             }
         });
     }
-    function hapus_foto(id, produk){
+
+    function edit_ongkir(id) {
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url() ?>dashboard/show_edit_ongkir",
+            data: {
+                id: id
+            },
+            success: function(data) {
+                $("#show_edit_ongkir").html(data);
+            }
+        });
+    }
+
+    function hapus_foto(id, produk) {
         $.ajax({
             type: "POST",
             url: "<?php echo base_url() ?>dashboard/hapus_foto",

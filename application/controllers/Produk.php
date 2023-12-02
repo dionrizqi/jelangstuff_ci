@@ -215,11 +215,29 @@ class Produk extends CI_Controller
         $this->load->view('page/produk/cari', $data);
     }
     public function beli_langsung(){
+		$config = array(
+			'upload_path' => "./dist/bukti/",
+			'allowed_types' => "jpg|png|jpeg|JPG|JPEG|PNG",
+			'overwrite' => TRUE,
+			'max_size' => "50000000",
+			'encrypt_name' => TRUE
+		);			
+		$this->load->library('upload', $config);
+		if (!empty($_FILES["bukti"]["name"])) {
+			if($this->upload->do_upload('bukti'))
+			{
+				$uploadData = $this->upload->data();
+				$bukti = $uploadData['file_name'];
+					
+			}
+		}else{
+		}
+
         $id_produk = $this->input->post('id_produk');
         $id_user = $this->input->post('id_user');
         $jumlah_beli = $this->input->post('jumlah_beli');
         $ongkir = $this->input->post('ongkir');
-        $total_beli = $this->input->post('total_beli');
+        $total_beli = $this->input->post('total');
         $this->db->insert('beli', array(
             'id' => '',
             'id_produk' => $id_produk,
@@ -227,14 +245,17 @@ class Produk extends CI_Controller
             'jumlah' => $jumlah_beli,
             'created_at' => date('Y-m-d H:i:s'),
             'total' => $total_beli,
-            'status' => 'Menunggu Pembayaran',
+            'status' => 'Pembayaran Diterima',
+            'tarif_ongkir' => $ongkir,
+            'bukti' => $bukti
         ));
         $last_id = $this->db->insert_id();
         $this->db->insert('history_beli', array(
             'id' => '',
             'id_beli' => $last_id,
-            'status' => 'Menunggu Pembayaran',
+            'status' => 'Pembayaran Diterima',
             'created_at' => date('Y-m-d H:i:s'),
         ));
+        redirect(site_url('produk/riwayat'));
     }
 }

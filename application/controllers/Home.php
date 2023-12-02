@@ -10,6 +10,7 @@ class Home extends CI_Controller {
         $data['desc'] = "JelangStuff";
 		$data['kategori'] = $this->db->get('kategori')->result();
 		$data['getProduk'] = $this->Produk_model->get_newest_home();
+		$data['getTerlaris'] = $this->Produk_model->get_terlaris();
 		$this->load->view('home', $data);
 	}
 }

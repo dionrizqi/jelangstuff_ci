@@ -27,7 +27,7 @@
                     <?php if ($this->session->userdata('status') == 'logged_in') { ?>
                       <p class="info-box-title">Selamat Datang <?= $this->session->userdata('nama') ?></p>
                       <?php if ($this->session->userdata('level') == 'admin') {
-                      } else { ?><a href="<?= site_url('produk/saya') ?>" class="info-box-subtitle">Profile Saya</a> || <?php } ?>
+                      } else { ?><a href="<?= site_url('auth/profile') ?>" class="info-box-subtitle">Profile Saya</a> || <?php } ?>
                       <a href="<?= site_url('auth/logout') ?>" class="info-box-subtitle">Logout</a>
                     <?php } else { ?>
                       <p class="info-box-title">Sudah Punya Akun?</p>
@@ -50,7 +50,9 @@
                 </div>
               </li>
               <li class="header-get-a-quote">
-                <a role="button" class="btn btn-primary" <?php if ($this->session->userdata('status') == 'logged_in') { ?> href="<?= site_url('produk/jual') ?>" <?php } else { ?> href="<?= site_url('auth') ?>" <?php } ?> class="info-box-subtitle">Cek Keranjang <div class="badge badge-secondary">0</div></a>
+                <a role="button" class="btn btn-primary" <?php if ($this->session->userdata('status') == 'logged_in') { ?> href="<?= site_url('keranjang') ?>" <?php } else { ?> href="<?= site_url('auth') ?>" <?php } ?> class="info-box-subtitle">
+                Cek Keranjang <div class="badge badge-secondary"><?= $this->db->get_where('keranjang', array('id_user' => $this->session->userdata('id')))->num_rows() ?></div>
+              </a>
               </li>
             </ul><!-- Ul end -->
           </div><!-- header right end -->
@@ -75,11 +77,12 @@
 
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('produk') ?>">Semua Produk</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="<?= site_url('') ?>">Produk Terlaris</a></li>
-
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('faq') ?>">FAQ</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('kontak') ?>">Kontak</a></li>
+                <?php if ($this->session->userdata('status') == 'logged_in') { ?>
+                  <li class="nav-item"><a class="nav-link" href="<?= site_url('riwayat') ?>">Riwayat Belanja</a></li>
+                <?php } ?>
                 <?php if ($this->session->userdata('status') == 'logged_in' && $this->session->userdata('level') == 'admin') { ?>
                   <li class="nav-item"><a class="nav-link" href="<?= site_url('dashboard') ?>">Dashboard</a></li>
                 <?php } else { ?>

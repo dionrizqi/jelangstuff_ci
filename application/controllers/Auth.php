@@ -18,6 +18,18 @@ class Auth extends CI_Controller {
         $data['desc'] = "Halaman Register";
 		$this->load->view('page/auth/register', $data);
 	}
+	public function profile()
+	{
+		if($this->session->userdata('status') != 'logged_in'){
+			redirect(site_url('auth'));
+		}else{
+			$id_user = $this->session->userdata('id');
+			$data['detail'] = $this->db->get_where('user', array('id' => $id_user))->row_array();
+			$data['title'] = "User ". $data['detail']['nama'];
+			$data['desc'] = "User ". $data['detail']['nama'];
+			$this->load->view('page/auth/profile', $data);
+		}
+	}
 
 	public function act_register(){
 		$q = $this->db->insert('user', array(
@@ -78,27 +90,32 @@ class Auth extends CI_Controller {
 		$this->load->view('page/auth/edit', $data);
 	}
 	public function act_edit(){
-		if($this->input->post('password') == ""){
-			$q = $this->db->update('user', array(
-				'nama' => $this->input->post('nama'),
-				'email' => $this->input->post('email'),
-				'telepon' => '62'.$this->input->post('telp'),
-				'alamat' => $this->input->post('alamat'),
-			), array('id' => $this->input->post('id')));
+		if($this->session->userdata('status') != 'logged_in'){
+			redirect(site_url('auth'));
 		}else{
-			$q = $this->db->update('user', array(
-				'nama' => $this->input->post('nama'),
-				'email' => $this->input->post('email'),
-				'password' => md5($this->input->post('password')),
-				'telepon' => '62'.$this->input->post('telp'),
-				'alamat' => $this->input->post('alamat'),
-			), array('id' => $this->input->post('id')));
+			if($this->input->post('password') == ""){
+				$q = $this->db->update('user', array(
+					'nama' => $this->input->post('nama'),
+					'email' => $this->input->post('email'),
+					'telepon' => '62'.$this->input->post('telp'),
+					'alamat' => $this->input->post('alamat'),
+				), array('id' => $this->input->post('id')));
+			}else{
+				$q = $this->db->update('user', array(
+					'nama' => $this->input->post('nama'),
+					'email' => $this->input->post('email'),
+					'password' => md5($this->input->post('password')),
+					'telepon' => '62'.$this->input->post('telp'),
+					'alamat' => $this->input->post('alamat'),
+				), array('id' => $this->input->post('id')));
+			}
+			if($q == TRUE){
+				redirect(site_url('auth/profile'));
+			}else{
+				echo "404 Error";
+			}
 		}
-		if($q == TRUE){
-			redirect(site_url('produk/saya'));
-		}else{
-			echo "404 Error";
-		}
+		
 		
 	}
 

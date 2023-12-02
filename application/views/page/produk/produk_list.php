@@ -31,6 +31,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
+                                <br>
                                     <div class="card">
                                         <div class="card-body" style="font-size:1em;">
                                             <table style="width:100%;">
