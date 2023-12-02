@@ -1,0 +1,617 @@
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.centered {
+	top: 50%;
+	left: 50%;
+	transform: translate(0, -80%);
+}
+.responimg{
+	max-width: 100%;
+	height: auto;
+}
+.responimg-home{
+	max-width: 100%;
+	height: auto;
+}
+.how{
+	background: url('<?php echo base_url(); ?>dist/img/com-1.png') no-repeat;
+	min-height:450px;
+	position: relative;
+}
+.as{
+	margin: 0 auto;
+	width: 500px;
+	position: relative;
+	top:20px;
+	max-height:294px;
+	right: 11px;
+	max-width: 490px;
+}
+.modal-body {
+	max-height: calc(100vh - 210px);
+	overflow-y: auto;
+}
+.text-block {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	background-color: black;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.titleMenu{
+	font-size: 3.1em;
+	font-family: 'Avenir Next';
+}
+hr.style-two {
+	align:center;
+	border: 0;
+	height: 1px;
+	width: 20%;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(233, 69, 75, 1), rgba(0, 0, 0, 0));
+}
+hr.style-con {
+	border: 0;
+	height: 1px;
+	width: 20%;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0));
+}
+.kartu{
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 -4px 8px 0 rgba(0,0,0,0.2) !important; 
+	transition: 0.3s !important;
+}
+#voting{
+	color:#fff;
+	background-color: #333;
+	display: none;
+	padding: 5px; 
+	border-radius: 0.3em;
+}
+.centered {
+	top: 50%;
+	left: 50%;
+	transform: translate(0, -80%);
+}
+.link-artikel{
+	color: #e9454b !important;
+	
+}
+.link-artikel:hover, .link-artikel:focus{
+	color: #d14045 !important;
+}
+
+#exampleModal .modal-dialog {
+	-webkit-transform: translate(0,-50%);
+	-ms-transform: translate(0,-50%);
+	-moz-transform: translate(0,-50%);
+	-o-transform: translate(0,-50%);
+	transform: translate(0,-50%);
+	top: 50%;
+	margin: 0 auto;
+}
+.home-overlay{
+	background-color: #999;
+	opacity: 0.5;
+}
+.gambar-home{
+	height:630px;
+	width: 100%;
+}
+.gambar-business{
+	height:400px;
+	width: 100%;
+}
+.artikel-container {
+	position: relative;
+	width: 100%;
+}
+.artikel-overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	background: rgba(0,0,0,.5);
+}
+
+.artikel-container:hover .artikel-overlay {
+	opacity: .5; 
+}
+
+.business-overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	background-color: #e9454b;
+}
+
+.artikel-container:hover .business-overlay {
+	opacity: 0.7; 
+}
+
+.business-text {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 51%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	
+}
+
+.artikel-text {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+.rf{
+	color: #000; 
+}
+.rf a:active{
+	color: #e9454b !important; 
+}
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+	color: #e9454b;
+}
+.nav > .linknya > a:focus, .nav > .linknya > a:hover {
+	color: #e9454b;
+}
+.konten-kontak{
+	background:url(../img/tweed.png) center repeat fixed;
+	height:auto;
+	overflow:hidden;
+	padding-bottom:50px;
+	padding-top:40px;
+	margin-top: -3%;
+}
+.konten-preview{
+	background:url();
+	padding-top:0px;
+	padding:40px 0;
+}
+.konten1{
+	background:#f9f9f9;
+	padding-top:0px;
+	padding: 20px 0;
+	height: 100%;
+}
+.judul-link{
+	font-family: 'Avenir Next';
+	font-size: 1.5em;
+	color:#fff; 
+	margin-top:70px;
+}
+.judul-konten1{
+	font-family: 'Avenir Next';
+	font-size: 2em;
+	color:#e9454b; 
+	margin-top:20px;
+}
+.judul-kontent2{
+	width:50%;
+	color:#e9454b;
+	opacity:0.8;
+	font-weight:500 !important;
+	line-height: 24px;
+	font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+.mainbg{
+	margin-top: 0px;
+	background-size: cover;
+	background: rgba(0,0,0,.5);
+}
+.btm{
+	width: 20%;
+	border-bottom: solid 3px #333;
+}
+.form-group{
+	margin-bottom: 0 !important;
+}
+.form-group .mform{
+	padding: 25px 20px;
+	border-radius: 0;
+}
+.form-group .mform:focus{
+	outline: none;
+	border: none;
+	box-shadow: none;
+}
+.mybtn{
+	padding: 15px 25px !important;
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-ms-transition: all .25s linear;
+	-o-transition: all .25s linear;
+	transition: all .25s linear;
+}
+.mybtnDaftar{
+	color: #eaeaea !important;
+	/*opacity: 0.87 !important;*/
+}
+a{
+	text-decoration: none !important;
+}
+.mybtn:active,.mybtn:focus{
+	outline: none !important;
+}
+.mybtn:hover{
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-ms-transition: all .25s linear;
+	-o-transition: all .25s linear;
+	transition: all .25s linear;
+}
+.mainnya{
+	font-family: 'Avenir Next' !important;
+}
+#top{
+	box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.08);
+	border: none;
+}
+#top a.navbar-brand{
+	padding: 0 0;
+	color: #000;
+}
+#top .navAwal li.linknya a:hover{
+	color: #e9454b;
+	margin-top: -3px;
+	border-bottom: solid 3px #e9454b;
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+}
+#top .navAwal li{
+	padding: 0px;
+	font-size: 85% !important;
+}
+#top .navAwal li.linknya a{
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+	padding: 21px;
+}
+#top .navAwal li a button.btnlog{
+	padding: 0;
+	border-color: #000;
+	color: #000;
+	background: transparent;
+	margin: -10px;
+}
+button.btnlog{
+	padding: 0;
+	border-color: #e9454b;
+	color: #e9454b;
+	background: transparent;
+	margin: -10px;	
+}
+
+button.btncl{
+	padding: 0;
+	border: 2px solid;
+	border-color: #fff;
+	color: #fff;
+	background: transparent;
+	margin: -10px;	
+}
+
+button.btnlog:hover, button.btncl:hover{
+	background: transparent;
+	color: #fff;
+	background: #e9454b;
+}
+#top .navAwal li a button.btnlog:hover{
+	background: transparent;
+	color: #fff;
+	background: #e9454b;
+}
+#top .navAwal li a button.btnreg{
+	padding: 0;
+	margin: -10px;
+	border-color: #f06464;
+	background: transparent;
+	color: #f06464;
+}
+#top .navAwal li a button.btnreg:hover{
+	background: transparent;
+	color: #fff;
+	background: #f06464;
+	margin: -10px;
+}
+.navbar-nav li.linknya a.active{
+	margin-top: -3px !important;
+	border-bottom: solid 3px #000 !important;
+}
+/*Sign In and Up*/
+#mynav{
+	background: transparent;
+	border: none;
+}
+#mynav .navAwal li{
+	padding: 20px 0;
+}
+#mynav .navAwal li a.mybtn{
+	background: transparent;
+	color: #eaeaea;
+}
+#mynav .navAwal li a.mybtn:hover{
+	background: rgba(255,255,255,.7);
+	color: #333;
+}
+.carousel-inner .item .carousel-caption{
+	position: absolute;
+	right: 25px;
+	left: 25px;
+	padding: 0;
+	bottom: 0;
+	font-family: 'Avenir Next';
+	text-align: left;
+}
+.carousel-inner .item .carousel-caption h1{
+	font-weight: 100 !important;
+	font-size: 3em;
+	color: #e9454b;
+}
+.carousel-inner .item .carousel-caption h1 small{
+	color: #f9f9f9;
+	opacity: 0.7;
+	margin-top: -10px !important;
+}
+.carousel-inner .item .carousel-caption button.btnget{
+	background: rgba(0,0,0,.7);
+	border: none;
+	color: #fff;
+	border-radius: 2px 2px 0 0;
+	padding: 20px 70px !important;
+}
+.carousel-inner .item .carousel-caption button.btnget:hover{
+	background: rgba(0,0,0,.5)
+}
+.mypan:hover{
+	border-color: #333;
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+}
+.mypan:hover h2,.mypan:hover i{
+	color: #e9454b;
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+}
+.mFoot div{
+	background: #333;
+	color: #dedede;
+	padding:15px 0 !important;
+}
+.mFoot div.sosmed{
+	padding: 0 !important;
+}
+.mFoot div.sosmed a:hover i{
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+	border-color: transparent;
+}
+.mFoot div.sosmed a.fac:hover i{
+	background: #335589;
+	color: #f9f9f9;
+}
+.mFoot div.sosmed a.twit:hover i{
+	background: #52aac9;
+	color: #f9f9f9;
+}
+.mFoot div.sosmed a.gplus:hover i{
+	background: #f06464;
+	color: #f9f9f9;
+}
+.mFoot div.sosmed a.fac i{
+	color: #335589;
+}
+.mFoot div.sosmed a.twit i{
+	color: #52aac9;
+}
+.mFoot div.sosmed a.gplus i{
+	color: #f06464;
+}
+.mFoot div.sosmed a i{
+	font-weight: 500 !important;
+	border:solid 1px #999;
+	border-radius: 3px;
+	padding: 10px;
+	width: 45px;
+	margin: 0 10px !important;
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+}
+#contact a{
+	color: #999 !important;
+}
+#contact a:hover{
+	color: #e9454b !important;
+}
+
+#contact .mybtnCt{
+	background: transparent;
+	border: solid 2px #f9f9f9;
+	padding: 10px 15px;
+	border-radius: 0;
+	color: #fff;
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-ms-transition: all .25s linear;
+	-o-transition: all .25s linear;
+	transition: all .25s linear;
+}
+#contact .mybtnCt:hover,#contact .mybtnCt:focus{
+	-webkit-transition: all .25s linear;
+	-moz-transition: all .25s linear;
+	-ms-transition: all .25s linear;
+	-o-transition: all .25s linear;
+	transition: all .25s linear;
+	border: solid 2px #f9f9f9;
+	padding: 10px 15px !important;
+	background: #fff;
+	color: #e9454b;	
+}
+div.form-group .myform{
+	display: block !important;
+	width: 100% !important;
+	padding: 8px 15px !important;
+	font-size: 15px !important;
+	color: #000 !important;
+	background: #fff !important;
+	border-bottom: 2px solid #e9454b !important;
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s !important;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s !important;
+	margin-bottom: 15px !important;
+	box-shadow: none;
+	border-radius: 0px;
+	border: none;
+	-webkit-appearance: none;
+}
+div.form-group .myform:focus{
+	outline: transparent !important;
+	box-shadow: none;
+}
+@font-face {
+	font-family: 'Mr Dafoe';
+
+	src: url('../fonts/MrDafoe.woff');
+}
+@font-face {
+	font-family: 'Avenir Next';
+
+	src: url('../fonts/AvenirNextLTPro-Regular.woff');
+	src: url('../fonts/AvenirNextLTPro-Regular.woff?#iefix') format('woff');
+}
+@media(max-width:1024px){
+	.mainbg .container .log{
+		margin: 9.45% auto !important;
+	}
+	.mainbg .container .reg{
+		margin: 6.8% auto !important;
+	}
+}
+
+.jir{
+	left:18%;
+}
+.judul-ar{
+	font-size: 3.5em;
+	text-transform: uppercase;
+}
+
+.exp-tab{
+	margin-left: 35% !important;
+	margin-bottom: 5% !important;
+}
+
+@media(max-width:768px){
+	body{
+		padding-top: 50px !important;
+	}
+	.exp-tab{
+		margin-left: 1% !important;
+		margin-bottom: 5% !important;
+	}
+	.mmk{
+		padding: 10px !important;
+	}
+	#top a.navbar-brand{
+		margin: -8px 20px;
+	}
+	#top .navAwal li a button{
+		width: 100%;
+		margin: 0 0px 5px 0 !important;
+	}
+	#top .navAwal{
+		overflow-y: auto !important;
+		overflow-x: auto !important;
+	}
+	.cuk{
+		display: block !important;
+	}
+	#mynav{
+		background: #f9f9f9 !important;
+	}
+	#mynav .navAwal li a.mybtn{
+		color: #f06464;
+		margin: 0 10px;
+	}
+	.mobil{
+		height: 200px !important;
+	}
+	.car-bus{
+		height: 200px !important;
+	}
+	.gambar-home{
+		height: 200px !important;
+	}
+	.gambar-business{
+		height: 200px !important;
+	}
+	.jir{
+		left: 0% !important;
+	}
+	.responimg-home{
+		max-width: 80%;
+		height: auto;
+	}
+	/*.blok{
+		overflow-y: auto !important;
+		overflow-x: auto !important;
+		height: 90vh !important;
+	}*/
+	.tol{
+		width: 99%;
+	}
+	.judul-ar{
+		word-wrap: break-word;
+	    font-size: 2.1em;
+	}
+	.sharing{
+	    margin-left:10px;
+	}
+
+
+}
+

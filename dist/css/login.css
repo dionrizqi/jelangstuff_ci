@@ -1,0 +1,76 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #444 !important;
+	font-family: 'Lato Light';
+}
+h2{
+	color: #2fac9a;
+}
+div.header-login{
+	border-bottom: solid 2px #2fac9a;
+}
+div.bd-login{
+	margin: 10% auto;
+	position: relative;
+	width: 450px;
+	overflow: hidden;
+	height: auto;
+	background:rgb(255,255,255);
+	box-shadow: 0 2px 10px black;
+}
+div.footer{
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	color: #2fac9a;
+}
+div.footer-login{
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	padding: 10px 20px;
+}
+div.group{
+	padding: 20px;
+	position: relative;
+	border-bottom: solid 2px #2fac9a;
+}
+div.group input.inputSony{
+	width: 93%;
+	border: groove 1px #eee;
+	padding: 10px 14px;
+}
+div.group select.inputSony{
+	width: 100%;
+	border: groove 1px #eee;
+	padding: 10px 14px;
+}
+div.group input.inputSony:focus{
+	/*border-color: #2fac9a;
+	box-shadow: 0 0 8px #2fac9a;
+	border-radius: 0;*/
+	transition:all 0.2s ease-in;
+	border-color:#66afe9;
+	outline:0;
+/*	-webkit-box-shadow:0 0 8px rgba(68,68,68,0.6);
+	box-shadow:0 0 8px rgba(68,68,68,0.6);*/
+	border-color:rgba(68,68,68,0.8);
+}
+div.group div.input-group{
+	margin-top: 10px;
+}
+input.inputKirim{
+	float: right !important;
+	position: relative;
+	cursor: pointer;
+	height: 35px;
+	background-color: #2fac9a;
+	opacity: 1;
+	color: white;
+	border: none;
+	width: 70px;
+}
+input.inputKirim:hover{
+	opacity: 0.8;
+}
