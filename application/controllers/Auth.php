@@ -83,12 +83,6 @@ class Auth extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('/');
 	}
-	public function edit(){
-        $data['title'] = "Halaman Edit";
-        $data['desc'] = "Halaman Edit";
-		$data['detail'] = $this->db->get_where('user', array('id' => $this->session->userdata('id')))->row_array();
-		$this->load->view('page/auth/edit', $data);
-	}
 	public function act_edit(){
 		if($this->session->userdata('status') != 'logged_in'){
 			redirect(site_url('auth'));
