@@ -86,6 +86,6 @@ class Keranjang extends CI_Controller {
             ));
             $this->db->delete('keranjang', array('id_produk' =>  $_POST['id_produk'][$key]));
         }
-        redirect(site_url('produk/riwayat'));
+        redirect(site_url('riwayat'));
     }
 }
