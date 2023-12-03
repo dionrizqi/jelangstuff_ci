@@ -256,6 +256,6 @@ class Produk extends CI_Controller
             'status' => 'Pembayaran Diterima',
             'created_at' => date('Y-m-d H:i:s'),
         ));
-        redirect(site_url('produk/riwayat'));
+        redirect(site_url('riwayat'));
     }
 }

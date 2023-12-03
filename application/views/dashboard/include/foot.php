@@ -1,5 +1,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="<?= base_url(); ?>dist/js/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" integrity="sha512-ubuT8Z88WxezgSqf3RLuNi5lmjstiJcyezx34yIU2gAHonIi27Na7atqzUZCOoY4CExaoFumzOsFQ2Ch+I/HCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
@@ -12,10 +14,26 @@
 
 <script>
     var uri = 0;
-    <?php if($this->uri->segment(3) == true) {?>
-        uri = <?=$this->uri->segment(3)?>;
+    <?php if ($this->uri->segment(3) == true) { ?>
+        uri = <?= $this->uri->segment(3) ?>;
     <?php } ?>
     console.log(uri);
+
+    $('.daterange').daterangepicker({
+        opens: 'left',
+        autoUpdateInput: false,
+        locale: {
+            format: 'YYYY-MM-DD',
+            cancelLabel: 'Clear'
+        }
+    });
+    $('.daterange').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD')).change();
+    });
+    $('.daterange').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('').change();
+    });
+
     $(document).on('click', '.tombol-hapus', function(e) {
         e.preventDefault();
         var href = $(this).attr('href');
@@ -103,9 +121,20 @@
             },
         });
 
+        $('#table_laporan').DataTable({
+                destroy: true,
+            "ajax": {
+                url: '<?= base_url() ?>dashboard/get_laporan',
+                type: 'GET'
+            },
+        });
+
+
         $('#table_history').DataTable({
             "ajax": {
-                data: {id:uri},
+                data: {
+                    id: uri
+                },
                 url: '<?= base_url() ?>dashboard/get_history_pembelian',
                 type: 'POST'
             },
@@ -230,6 +259,24 @@
                 edit_produk(produk);
             }
         });
+    }
+
+    function change_laporan() {
+        $("#table_laporan").dataTable().fnDestroy();
+        var awal = $("#date_laporan").val().slice(0, 11);
+        var akhir = $("#date_laporan").val().slice(12, 23);
+        $('#table_laporan').DataTable({
+            "ajax": {
+                destroy: true,
+                data: {
+                    awal: awal,
+                    akhir: akhir
+                },
+                url: '<?= base_url() ?>dashboard/get_laporan_filter',
+                type: 'POST'
+            },
+        });
+        $('#table_laporan').DataTable().ajax.reload();
     }
 </script>
 

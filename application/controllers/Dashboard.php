@@ -49,6 +49,11 @@ class Dashboard extends CI_Controller
 		$data['page_view'] = 'dashboard/pembelian';
 		$this->load->view('dashboard/index', $data);
 	}
+	public function laporan()
+	{
+		$data['page_view'] = 'dashboard/laporan';
+		$this->load->view('dashboard/index', $data);
+	}
 	public function detail_pembelian($id)
 	{
 		$data['page_view'] = 'dashboard/detail_pembelian';
@@ -797,5 +802,87 @@ class Dashboard extends CI_Controller
 		}else{
 			echo '404 Error';
 		}
+	}
+
+	public function get_laporan()
+	{
+		$draw = intval($this->input->get("draw"));
+		$query = $this->db->query("SELECT beli.*, produk.nama nama_produk, 
+		user.nama nama_user, produk.link 
+		FROM beli
+		JOIN produk ON produk.id = beli.id_produk
+		JOIN user ON user.id = beli.id_user
+		WHERE beli.status = 'Selesai'
+		ORDER BY created_at DESC
+		");
+		$data = [];
+		$no = 1;
+		foreach ($query->result() as $row) {
+			$data[] = array(
+				$no++,
+				'<a href="'.site_url('produk/detail/'.$row->link).'" target="_blank">'.$row->nama_produk.'</a>',
+				'<a href="#userModal" data-toggle="modal" onclick="user_modal('.$row->id_user.')">'.$row->nama_user.'</a>',
+				$row->jumlah,
+				$row->tarif_ongkir,
+				$row->total,
+				$row->status,
+				$row->created_at,
+				'
+				<a href="'.site_url('dashboard/detail-pembelian/'.$row->id).'" role="button" class="btn-sm btn btn-primary"><i class="fas fa-icon fa-eye"></i></a>
+				<a href="' . site_url('dashboard/delete-pembelian/' . $row->id) . '" role="button" class="tombol-hapus btn-sm btn btn-danger"><i class="fas fa-icon fa-trash"></i></a>
+				'
+			);
+		}
+
+		$result = array(
+			"draw" => $draw,
+			"recordsTotal" => $query->num_rows(),
+			"recordsFiltered" => $query->num_rows(),
+			"data" => $data
+		);
+
+		echo json_encode($result);
+	}
+	
+	public function get_laporan_filter()
+	{
+		$draw = intval($this->input->get("draw"));
+		$awal = $this->input->post('awal');
+		$akhir = $this->input->post('akhir');
+		$query = $this->db->query("SELECT beli.*, produk.nama nama_produk, 
+		user.nama nama_user, produk.link 
+		FROM beli
+		JOIN produk ON produk.id = beli.id_produk
+		JOIN user ON user.id = beli.id_user
+		WHERE beli.status = 'Selesai' AND (beli.created_at BETWEEN '$awal' AND '$akhir')
+		ORDER BY created_at DESC
+		");
+		$data = [];
+		$no = 1;
+		foreach ($query->result() as $row) {
+			$data[] = array(
+				$no++,
+				'<a href="'.site_url('produk/detail/'.$row->link).'" target="_blank">'.$row->nama_produk.'</a>',
+				'<a href="#userModal" data-toggle="modal" onclick="user_modal('.$row->id_user.')">'.$row->nama_user.'</a>',
+				$row->jumlah,
+				$row->tarif_ongkir,
+				$row->total,
+				$row->status,
+				$row->created_at,
+				'
+				<a href="'.site_url('dashboard/detail-pembelian/'.$row->id).'" role="button" class="btn-sm btn btn-primary"><i class="fas fa-icon fa-eye"></i></a>
+				<a href="' . site_url('dashboard/delete-pembelian/' . $row->id) . '" role="button" class="tombol-hapus btn-sm btn btn-danger"><i class="fas fa-icon fa-trash"></i></a>
+				'
+			);
+		}
+
+		$result = array(
+			"draw" => $draw,
+			"recordsTotal" => $query->num_rows(),
+			"recordsFiltered" => $query->num_rows(),
+			"data" => $data
+		);
+
+		echo json_encode($result);
 	}
 }

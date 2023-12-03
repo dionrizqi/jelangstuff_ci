@@ -74,6 +74,15 @@
             </p>
           </a>
         </li>
+        
+        <li class="nav-item">
+          <a href="<?= site_url('dashboard/laporan') ?>" class="nav-link">
+            <i class="nav-icon fas fa-clipboard-check"></i>
+            <p>
+              Laporan
+            </p>
+          </a>
+        </li>
 
         <li class="nav-item">
           <a href="<?= site_url('dashboard/user') ?>" class="nav-link">
