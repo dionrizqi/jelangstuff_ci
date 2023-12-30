@@ -163,7 +163,7 @@
                         <tr>
                             <td>Harga</td>
                             <td>:</td>
-                            <td style="text-align:right">Rp. <?= number_format($detail['harga']) ?></td>
+                            <td style="text-align:right"><input type="hidden" id="harga" value="<?= $detail['harga'] ?>">Rp. <?= number_format($detail['harga']) ?></td>
                         </tr>
                         <tr>
                             <td>Kategori</td>

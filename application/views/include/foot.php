@@ -73,6 +73,9 @@
     }
   }
   $("#ongkir").on( "change", function() {
+    var jml = $("#jumlah_beli").val();
+    var harga = $("#harga").val();
+    $("#total_beli").val(jml * harga);
     var total = parseInt($("#total_beli").val());
     var ongkir = parseInt($("#ongkir").val());
     var berat = parseInt($("#berat").val());
