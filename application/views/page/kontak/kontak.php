@@ -9,7 +9,8 @@
             </center>
             <div class="" style="margin-top:-4% !important;">
                 <div class="">
-                    <center class="embed-responsive"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15866.15116070585!2d106.8831032!3d-6.1925412!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4f160fbfc329574!2sAdikari%20Wisesa%20Indonesia.%20PT!5e0!3m2!1sid!2sid!4v1642488629051!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+                    <center class="embed-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.5437472010169!2d106.92525505822012!3d-6.240654014360176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698cc5ec9f1bef%3A0x801c687bbc266d3e!2sJl.%20Mayang%20IV%20No.3%2C%20RT.5%2FRW.7%2C%20Pd.%20Klp.%2C%20Kec.%20Duren%20Sawit%2C%20Kota%20Jakarta%20Timur%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2013450!5e0!3m2!1sen!2sid!4v1703917334205!5m2!1sen!2sid" allowfullscreen="" loading="lazy" ></iframe>
                     </center>
                 </div>
             </div>
@@ -24,13 +25,15 @@
                         <div class="col-md-6">
                             <h3 style="margin:0 0 5px 0;">Our Address</h3>
                             <br>
-                            <p>PT Adikari Wisesa Indonesia<br>Jalan Pemuda No.61 Rawamangun Kav.19<br>Jakarta Timur 13220</p>
+                            <p>Pondok Kelapa Billy&Moon<br>
+                            Jl. Mayang 4 Blok AK 1 no. 3<br>
+                            Duren Sawit, Jakarta Timur<br></p>
                             <ul class="" style="list-style:none;padding:0;">
-                                <li><i class="fa fa-phone"></i> +62-21-4786-4302 +62-851-6255-1447</li>
+                                <li><i class="fa fa-phone"></i> +62-21-2345-6789 +62-851-2345-6789</li>
                                 <li class="divider"></li>
-                                <li><i class="fa fa-envelope"></i><a class="link-artikel" href="mailto:info@extreme-maintenance.com"> info@extreme-maintenance.com</a></li>
+                                <li><i class="fa fa-envelope"></i><a class="link-artikel" href="mailto:info@extreme-maintenance.com"> jelangstuff@gmail.com</a></li>
                                 <li class="divider"></li>
-                                <li><i class="fa fa-globe"></i><a class="link-artikel" href="javascript:;"> www.extreme-maintenance.com</a></li>
+                                <li><i class="fa fa-globe"></i><a class="link-artikel" href="javascript:;"> jelangstuff.awidigital.xyz</a></li>
                             </ul>
                         </div>
                         <div class="col-md-6">
