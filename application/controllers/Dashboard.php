@@ -291,9 +291,10 @@ class Dashboard extends CI_Controller
 	public function delete_user($id)
 	{
 		$this->db->delete('user', array('id' => $id));
-		$this->db->delete('produk', array('id_user' => $id));
-		$this->db->delete('foto_produk', array('id_user' => $id));
 		$this->db->delete('wishlist', array('id_user' => $id));
+		$getb = $this->db->get_where('beli', array('id_user' => $id))->row_array();
+		$this->db->delete('history_beli', array('id_beli' => $getb['id']));
+		$this->db->delete('beli', array('id_user' => $id));
 		redirect(site_url('dashboard/user'));
 	}
 	public function show_edit_user()
@@ -411,6 +412,9 @@ class Dashboard extends CI_Controller
 		$this->db->delete('produk', array('id' => $id));
 		$this->db->delete('foto_produk', array('id_produk' => $id));
 		$this->db->delete('wishlist', array('id_produk' => $id));
+		$getb = $this->db->get_where('beli', array('id_user' => $id))->row_array();
+		$this->db->delete('history_beli', array('id_beli' => $getb['id']));
+		$this->db->delete('beli', array('id_user' => $id));
 		redirect(site_url('dashboard/produk'));
 	}
 	public function add_faq()
@@ -502,8 +506,9 @@ class Dashboard extends CI_Controller
 		$deskripsi = $this->input->post('deskripsi');
 		$stok = $this->input->post('stok');
 		$get_kategori = $this->db->get_where('kategori', array('id' => $kategori))->row_array();
-		$get_last_id = $this->db->query("SELECT COALESCE(MAX(id),0) id FROM produk")->row_array();
-		$link = strtolower($nama . '-' . $get_kategori['nama'] . '-' . $get_last_id['id'] + 1);
+		$get_last_id = $this->db->query("SELECT MAX(id) id FROM produk")->row_array();
+		$max_id = $get_last_id['id'] + 1;
+		$link = strtolower($nama . '-' . $get_kategori['nama'] .'-'. $max_id);
 		$no_space =  str_replace(" ", "-", "$link");
 		$fin_link = preg_replace('/[^A-Za-z0-9\-]/', '', $no_space);
 		$q = $this->db->insert('produk', array(
@@ -514,7 +519,7 @@ class Dashboard extends CI_Controller
 			'harga' => $harga,
 			'deskripsi' => $deskripsi,
 			'stok' => $stok,
-			'link' => $fin_link . '-' . date('Y-m-d'),
+			'link' => $fin_link. '-' . date('Y-m-d'),
 			'created_at' => date('Y-m-d H:i:s')
 		));
 		$last_id = $this->db->insert_id();
