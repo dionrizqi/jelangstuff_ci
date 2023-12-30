@@ -30,7 +30,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">62</div>
                                         </div>
-                                        <input value="<?=$detail['telepon']?>" type="number" name="telp" class="form-control" placeholder="Nomor Telepon" required>
+                                        <input value="<?=substr($detail['telepon'], 2);?>" type="number" name="telp" class="form-control" placeholder="Nomor Telepon" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
